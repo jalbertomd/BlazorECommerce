@@ -1,7 +1,7 @@
 ﻿@page "/cart"
 @inject ICartService CartService
-@*@inject IOrderService OrderService
-@inject IAuthService AuthService*@
+@inject IOrderService OrderService
+@inject IAuthService AuthService
 @inject NavigationManager NavigationManager
 
 <PageTitle>Shopping Cart</PageTitle>
@@ -59,7 +59,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        //isAuthenticated = await AuthService.IsUserAuthenticated();
+        isAuthenticated = await AuthService.IsUserAuthenticated();
         await LoadCart();
     }
 
@@ -91,7 +91,7 @@ else
 
     private async Task PlaceOrder()
     {
-        //string url = await OrderService.PlaceOrder();
-        //NavigationManager.NavigateTo(url);
+        string url = await OrderService.PlaceOrder();
+        NavigationManager.NavigateTo(url);
     }
 }
